@@ -29,3 +29,36 @@ header {
     
 }
 
+.p-img-1{
+    width: 500px;
+    position: absolute;
+    
+    
+}
+.p-img-2{
+    width: 200px;
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+}
+.p-parent{
+    background-color: #181818;
+    width: 500px;
+    height: 550px;
+    position: relative;
+}
+.p-height-box{
+    height: 1000px;
+    width: 200px;
+    background-color: antiquewhite;
+}
+.p-fixed{
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+    border-radius: 50px;
+    position: sticky;
+    top: 50px;
+}
+
+
