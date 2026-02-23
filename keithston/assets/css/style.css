@@ -1,5 +1,12 @@
 :root{
     --text-sub-heading:#E9BD8C;
+    --btn-primary : #933C24;
+    --btn-hover-primary : #7c321d;
+    --btn-active-primary : #5c1b09;
+}
+
+body{
+    font-family: "Inter";
 }
 
 .h-heading{
@@ -15,4 +22,20 @@
 }
 .h-sub-heading{
     color: var(--text-sub-heading);
+}
+
+.btn-primary{
+    --bs-btn-bg:var(--btn-primary);
+    --bs-btn-border-color:var(--btn-primary);
+
+    --bs-btn-hover-bg:var(--btn-hover-primary);
+    --bs-btn-hover-border-color:var(--btn-hover-primary);
+
+    --bs-btn-active-bg:var(--btn-active-primary);
+    --bs-btn-active-border-color:var(--btn-active-primary);
+}
+.header-learn-more{
+    color: var(--text-sub-heading);
+    text-decoration: none;
+    font-weight: 500;
 }
