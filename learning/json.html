@@ -96,30 +96,35 @@
 
             var productData = '';
 
-
-            for(var i=0 ; i< products.length; i++){
+            
+            products.forEach(data =>{
 
                 productData+= `
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                         <div class="card shadow product-data mt-3">
-                            <img src="${products[i].image}" class="card-img-top" alt="...">
+                            <img src="${data.image}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 
                                 <div class="d-flex justify-content-between">
-                                    <h5 class="card-title">${products[i].name}</h5>
-                                    <h5 class="card-title">${products[i].price} Rs</h5>
+                                    <h5 class="card-title">${data.name}</h5>
+                                    <h5 class="card-title">${data.price} Rs</h5>
                                 </div>
 
-                                <p class="card-text">${products[i].description}.</p>
+                                <p class="card-text">${data.description}.</p>
                                 
                                 <div class="d-flex justify-content-between">
                                     <a href="#" class="btn btn-primary">Add to Cart</a>
-                                    <p class="card-text">${products[i].rating}</p>
+                                    <p class="card-text">${data.rating}</p>
                                 </div>
                             </div>
                         </div>
                     </div>`;
-            }
+
+            });
+           
+
+                
+            
 
             productRow.innerHTML = productData;
 
