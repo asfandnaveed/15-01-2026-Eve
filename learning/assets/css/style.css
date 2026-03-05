@@ -60,5 +60,8 @@ header {
     position: sticky;
     top: 50px;
 }
+.product-data img{
+    height: 200px;
+}
 
 
