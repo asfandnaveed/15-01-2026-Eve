@@ -15,3 +15,11 @@ https://www.figma.com/design/uSPJ31lZvpSTHzPVWuL735/Food-Website-UI-Design-Tutor
 ______________________________________________________________________________________
 # FIGMA FOOD HUT WEBSITE DESIGN 
 https://www.figma.com/design/i8rZcxefdAJgUsrpmklYCO/Food-Hut---Food-Ordering-Responsive-Design---Community-?node-id=11-5&p=f&t=xFItsa1xxIuOYLEg-0
+
+______________________________________________________________________________________
+# FIGMA WEATHER WEBSITE DESIGN 
+https://www.figma.com/design/1Y9cNx9OsBWHJxnet4iZxi/Weather-Web--Community---Copy-?node-id=0-1&p=f&t=OuaAiI1GNuGeD4Cz-0
+
+______________________________________________________________________________________
+# FIGMA ECHOBAZAR WESBSITE DESIGN 
+https://www.figma.com/design/WzvvIwGn8HPd8ATqXC6vsP/Shopery---Organic-eCommerce-Shop-Website-Figma-Template--Community---Community-?node-id=460-39913&p=f&t=YiNnzFgAdS3j91Dy-0
