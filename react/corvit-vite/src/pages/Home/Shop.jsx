@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Shop.css'
+import { useNavigate } from "react-router-dom";
 
 export default function ShopPage() {
 
     const [productData, setProuctData] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
+    const navigate = useNavigate();
+
     const imgBaseUrl = "http://localhost:3000";
+
+
+    const NavigateToProductDetail = (id)=>{
+
+        navigate(`/product/productDetail/${id}`);
+    };
 
     const getProducts = async () => {
 
@@ -115,7 +124,7 @@ export default function ShopPage() {
                         productData.products.map((product) => (
 
                             <div className="col-lg-3 col-md-4 col-sm-6" >
-                                <div className="card h-100 shadow-sm">
+                                <div className="card h-100 shadow-sm" onClick={()=>NavigateToProductDetail(product.id)}>
                                     {/*imgBaseUrl /uploads/chili.png */}
                                     <img
                                         src={imgBaseUrl+product.image}

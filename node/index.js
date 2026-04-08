@@ -4,7 +4,8 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors());
-app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static('uploads'));
+app.use(express.json());
 
 
 const db = mysql.createConnection({
@@ -69,6 +70,27 @@ app.get('/api/products/detail/:id', (req, res) => {
         }
     });
 
+});
+
+
+app.post('/api/user/login' , (req, res)=>{
+
+
+    const {email,pass} = req.body;
+
+    const sql = "SELECT * FROM userss WHERE email=?";
+
+    db.query(sql , [email] , (err , result)=>{
+
+        if(err){
+            res.status(500).json({
+                status: false,
+                message: "Unable to login user ! "
+            });
+        }
+
+    });
+    
 });
 
 

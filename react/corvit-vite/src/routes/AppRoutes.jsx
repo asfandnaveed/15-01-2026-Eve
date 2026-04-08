@@ -8,7 +8,7 @@ export default function AppRoutes(){
     return(
         <Routes>
             <Route path="/"  element={ <ShopPage />}/>
-            <Route path="/product/productDetail" element={ <ProductDetail />}/>
+            <Route path="/product/productDetail/:id" element={ <ProductDetail />}/>
         </Routes>
     );
 }

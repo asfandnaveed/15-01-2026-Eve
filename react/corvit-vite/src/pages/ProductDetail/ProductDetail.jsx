@@ -1,9 +1,43 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 
-export default function ProductDetail (){
+export default function ProductDetail() {
 
-    return(
-       <div className="container py-5">
+    const baseURL = 'http://localhost:3000';
+
+    const [productDetail, setProductDetail] = useState();
+    const [isloading , setIsLoading] = useState(true);
+
+    const { id } = useParams();
+
+    const getProductDatails = async () => {
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/products/detail/${id}`);
+            const data = await response.json();
+            setProductDetail(data);
+        }catch(err){
+            
+        }finally{
+            setIsLoading(false);
+        }
+
+    };
+
+    useEffect(()=>{
+        getProductDatails();
+    } , []);
+
+
+    if(isloading){
+        return(
+            <h1>Loading</h1>
+        );
+    }
+
+    return (
+        <div className="container py-5">
             <div className="row">
                 {/* Left: Images */}
                 <div className="col-md-6 d-flex">
@@ -15,7 +49,7 @@ export default function ProductDetail (){
 
                     <div className="flex-grow-1 text-center">
                         <img
-                            src="http://localhost:3000/uploads/cabage.png"
+                            src={baseURL+productDetail.product.image}
                             alt="Chinese Cabbage"
                             className="img-fluid"
                             style={{ maxHeight: 400 }}
@@ -25,20 +59,20 @@ export default function ProductDetail (){
 
                 {/* Right: Details */}
                 <div className="col-md-6">
-                    <h2 className="fw-bold">Chinese Cabbage</h2>
+                    <h2 className="fw-bold">{productDetail.product.name}</h2>
 
                     <div className="mb-2 text-warning">
                         ★★★★☆
-                        <span className="text-muted ms-2">4.3 Review</span>
+                        <span className="text-muted ms-2">{productDetail.product.rating} Review</span>
                     </div>
 
-                    <p className="text-muted">SKU: SKU-CABBAGE</p>
+                    <p className="text-muted">SKU: {productDetail.product.sku}</p>
 
-                    <h3 className="text-success fw-bold">$5.99</h3>
+                    <h3 className="text-success fw-bold">${productDetail.product.price}</h3>
 
                     <span className="badge bg-success mb-3">In Stock</span>
 
-                    <p className="text-muted">Fresh napa cabbage.</p>
+                    <p className="text-muted">{productDetail.product.description}.</p>
 
                     {/* Quantity + Cart */}
                     <div className="d-flex align-items-center gap-3 mt-4">
@@ -66,7 +100,7 @@ export default function ProductDetail (){
                             <strong>Category:</strong> Vegetables
                         </p>
                         <p>
-                            <strong>Stock:</strong> 80
+                            <strong>Stock:</strong> {productDetail.product.stock}
                         </p>
                     </div>
                 </div>
