@@ -7,7 +7,6 @@ app.use(cors());
 app.use('/uploads', express.static('uploads'));
 app.use(express.json());
 
-
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -73,25 +72,54 @@ app.get('/api/products/detail/:id', (req, res) => {
 });
 
 
-app.post('/api/user/login' , (req, res)=>{
+app.post('/api/user/login', (req, res) => {
 
+    const { email, pass } = req.body;
 
-    const {email,pass} = req.body;
+    const sql = "SELECT * FROM users WHERE email=?";
 
-    const sql = "SELECT * FROM userss WHERE email=?";
+    db.query(sql, [email], (err, result) => {
 
-    db.query(sql , [email] , (err , result)=>{
-
-        if(err){
-            res.status(500).json({
+        if (err) {
+            return res.json({
                 status: false,
                 message: "Unable to login user ! "
             });
         }
 
+        if (result.length == 0) {
+            return res.json({
+                status: false,
+                message: "User is not Registered ! "
+            });
+        }
+
+        const user = result[0];
+
+        if (user.password != pass) {
+            return res.json({
+                status: false,
+                message: "Invalid Password ! "
+            });
+
+        }
+
+
+        res.json({
+            status: true,
+            message: "Login Success ! ",
+            user:user
+        });
+
+
+
+
     });
-    
+
 });
+
+
+
 
 
 
