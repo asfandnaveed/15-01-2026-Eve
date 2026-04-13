@@ -119,6 +119,55 @@ app.post('/api/user/login', (req, res) => {
 });
 
 
+app.post('/api/user/register' , (req , res)=>{
+
+    const {email, pass, firstname , lastname, username , address , phone , postal } =req.body;
+
+    const checkSql = "SELECT * FROM users WHERE email=?";
+
+    db.query(checkSql , [email] , (err , result)=>{
+
+        if(err){
+            return res.json({
+                status: false,
+                message: "Something  Went Wrong! "
+            });
+        }
+
+
+        if(result.length > 0){
+            return res.json({
+                status: false,
+                message: "Email Already Registered ! "
+            });
+        }
+
+
+    });
+
+    const sql = `INSERT INTO users (email , password , firstname, lastname , username , phonenumber , address, postal , created_at) 
+    VALUE (?,?,?,?,?,?,?,?, NOW() )`;
+
+    db.query(sql , [email , pass , firstname , lastname , username , phone , address , postal] , (err , result)=>{
+
+
+        if(err){
+            return res.json({
+                status: false,
+                message: "Something  Went Wrong with User Registeration ! "
+            });
+        }else{
+            return res.json({
+                status: true,
+                message: "User Registered ! "
+            });
+        }
+    });
+
+
+});
+
+
 
 
 
