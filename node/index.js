@@ -7,6 +7,7 @@ import 'dotenv/config';
 import db from './config/database.js';
 import productRoute from './routes/productRoutes.js';
 import userRoute from './routes/userRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 
 
 
@@ -20,7 +21,7 @@ app.use(express.json());
 
 app.use('/api/products', productRoute);
 app.use('/api/user' , userRoute);
-
+app.use('/api/cart' , cartRoutes);
 
 
 
